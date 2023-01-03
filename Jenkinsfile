@@ -3,7 +3,6 @@ pipeline {
   agent none
 
   stages {
-    
     stage('worker-build') {
       agent {
         docker {
@@ -199,7 +198,6 @@ pipeline {
       } 
     } 
 
-
     stage('vote-docker-package') {
       agent any
       steps {
@@ -216,7 +214,6 @@ pipeline {
 
       }
     }
-
 
     stage('Sonarqube') {
       agent any
@@ -239,7 +236,6 @@ pipeline {
       }
     }
 
-
     stage("Quality Gate") {
       steps {
         timeout(time: 1, unit: 'HOURS') {
@@ -249,7 +245,6 @@ pipeline {
         }
       }
     }
-
 
     stage('deploy to dev') {
       agent any
